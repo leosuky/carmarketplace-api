@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,11 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'CarsApi/staticfiles')
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/image/'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'CarsApi/static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'CarsApi/static')]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/image')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'CarsApi/static/image')

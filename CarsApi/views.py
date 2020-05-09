@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
-#from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from sklearn.externals import joblib
 from django.contrib import messages
@@ -16,7 +15,6 @@ class PriceView(viewsets.ModelViewSet):
     queryset = Price.objects.all()
     serializer_class = priceSerializer
 
-#@api_view(['POST'])
 def price_reject(unit):
     try:
         cars_model = joblib.load(r'./CarsApi/cars_model.pkl')
@@ -24,7 +22,6 @@ def price_reject(unit):
         y_pred = cars_model.predict(x_test)
         amount = np.exp(y_pred)
         price = int(amount[0])
-        #new_df = pd.DataFrame(amount, columns=['Status'])
         return 'Your car is valued at ${}'.format(price)
     except ValueError as bad:
         return Response(bad.args[0], status.HTTP_400_BAD_REQUEST)
@@ -44,4 +41,4 @@ def price_contact(request):
             messages.success(request, answer)
     form = priceForm()
 
-    return render(request, 'myform/form.html', {'form':form})
+    return render(request, 'CarsApi/form.html', {'form':form})

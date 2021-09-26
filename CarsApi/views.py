@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from sklearn.externals import joblib
+import joblib
 from django.contrib import messages
 import numpy as np
 import pandas as pd
